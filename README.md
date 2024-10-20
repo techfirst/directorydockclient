@@ -79,6 +79,6 @@ This project is licensed under the MIT License.
 
 ## Support
 
-For additional assistance or information, please contact our support team or open an issue on our GitHub repository.
+For additional assistance or information, please open an issue on the GitHub repository or reach out directly on X (formerly Twitter) [@Stellan79](https://x.com/Stellan79).
 
 Streamline your directory management with DirectoryDockClient. Get started today!
