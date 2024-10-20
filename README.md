@@ -1,4 +1,4 @@
-# DirectoryDockClient
+# DirectoryDock API Client library
 
 DirectoryDockClient is a powerful API client for seamless interaction with the DirectoryDock service. It provides an easy-to-use interface for managing and retrieving directory entries.
 
