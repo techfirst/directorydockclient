@@ -12,16 +12,16 @@ DirectoryDockClient is a powerful API client for seamless interaction with the D
 
 ## Installation
 
-To install the directory-dock-client npm package, run:
+To install the directorydockclient npm package, run:
 
 ```sh
-npm install directory-dock-client
+npm install directorydockclient
 ```
 
 ## Usage
 
 ```typescript
-import DirectoryDockClient from "directory-dock-client";
+import DirectoryDockClient from "directorydockclient";
 
 const client = new DirectoryDockClient("your_directorydock_api_key_here");
 ```
