@@ -1,5 +1,6 @@
 import DirectoryDockClient from "../src/DirectoryDockClient";
 import { EntryData } from "../src/types/EntryData";
+import * as FilterableField from "../src/types/FilterableField";
 global.fetch = jest.fn();
 
 const VALID_API_KEY = "dd_4c15f0f4-6653-49b7-8960-3f9428db7fbe";
@@ -95,8 +96,7 @@ describe("DirectoryDockClient", () => {
     it("should return an empty array when no filterable fields are present", async () => {
       const client = new DirectoryDockClient(VALID_API_KEY);
       const filters = await client.getFilters();
-      expect(Array.isArray(filters)).toBe(true);
-      expect(filters.length).toBe(0);
+      expect(filters).toEqual([]);
     });
 
     it("should return filterable fields if they were present", async () => {
@@ -112,9 +112,12 @@ describe("DirectoryDockClient", () => {
         ],
       });
       const filters = await client.getFilters();
-      expect(Array.isArray(filters)).toBe(true);
-      expect(filters.length).toBe(1);
-      expect(filters[0]).toEqual({ name: "Description", type: "text" });
+      expect(filters).toBeInstanceOf(Array);
+      expect(filters).toHaveLength(1);
+      expect(filters[0]).toEqual<FilterableField.FilterableField>({
+        name: "Description",
+        type: "text",
+      });
     });
   });
 
