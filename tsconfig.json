@@ -8,9 +8,9 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
-    "rootDir": ".",
+    "rootDir": "./src", // Changed from "." to "./src"
     "types": ["node", "jest"]
   },
-  "include": ["src/**/*", "tests/**/*"],
+  "include": ["src/**/*"], // Changed to only include src
   "exclude": ["node_modules", "dist"]
 }

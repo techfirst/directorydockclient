@@ -8,12 +8,10 @@ import { BaseData } from "./types/BaseData";
 
 dotenv.config();
 
-class DirectoryDockClient {
-  private apiKey: string;
+export class DirectoryDockClient {
   private baseURL: string;
 
   constructor(apiKey: string, options: { baseURL?: string } = {}) {
-    this.apiKey = apiKey;
     this.baseURL =
       options.baseURL ||
       `https://directorydock.blob.core.windows.net/files/${apiKey}`;
@@ -113,5 +111,3 @@ class DirectoryDockClient {
     return filterableFields;
   }
 }
-
-export default DirectoryDockClient;
