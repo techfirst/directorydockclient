@@ -74,6 +74,12 @@ async function getFilters() {
   const filters: Filter[] = await client.getFilters();
   console.log("Available filters:", filters);
 }
+
+// Getting Categories
+async function getCategories() {
+  const categories: Category[] = await client.getCategories();
+  console.log("Available categories:", categories);
+}
 ```
 
 ### JavaScript
@@ -121,6 +127,12 @@ async function getFilters() {
   const filters: Filter[] = await client.getFilters();
   console.log("Available filters:", filters);
 }
+
+// Getting Categories
+async function getCategories() {
+  const categories: Category[] = await client.getCategories();
+  console.log("Available categories:", categories);
+}
 ```
 
 ## Type Definitions
@@ -146,6 +158,7 @@ src/
 └── types/
     ├── BaseData.ts
     ├── BaseEntry.ts
+    ├── Category.ts
     ├── EntryData.ts
     ├── FilterableField.ts
     ├── GetEntriesResponse.ts

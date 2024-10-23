@@ -78,4 +78,17 @@ describe("DirectoryDockClient", () => {
 
     expect(entry.Name.type).toBe("text");
   });
+
+  it("should fetch categories successfully", async () => {
+    const categories = await client.getCategories();
+
+    expect(Array.isArray(categories)).toBe(true);
+    expect(categories.length).toBeGreaterThan(0);
+
+    categories.forEach((category) => {
+      expect(category).toHaveProperty("id");
+      expect(category).toHaveProperty("name");
+      expect(category).toHaveProperty("slug");
+    });
+  });
 });

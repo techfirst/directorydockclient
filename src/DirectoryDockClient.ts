@@ -1,10 +1,16 @@
 const dotenv = require("dotenv");
 
 import { BaseEntry } from "./types/BaseEntry";
+
 import { TransformedEntry } from "./types/TransformedEntry";
+
 import { GetEntriesResponse } from "./types/GetEntriesResponse";
+
 import { BaseData } from "./types/BaseData";
+
 import { Filter } from "./types/Filter";
+
+import { Category } from "./types/Category";
 
 dotenv.config();
 
@@ -23,6 +29,7 @@ export class DirectoryDockClient {
 
   private async fetchFromAPI(
     endpoint: string,
+
     params: Record<string, any> = {}
   ): Promise<any> {
     const url = new URL(`${this.baseURL}/${endpoint}`);
@@ -47,10 +54,10 @@ export class DirectoryDockClient {
   private transformEntry(entry: BaseEntry): TransformedEntry {
     const transformedEntry = { ...entry } as TransformedEntry;
 
-    Object.keys(entry.data).forEach((key) => {
+    Object.keys(entry.data || {}).forEach((key) => {
       Object.defineProperty(transformedEntry, key, {
         get: function () {
-          return this.data[key];
+          return this.data?.[key];
         },
 
         enumerable: true,
@@ -93,7 +100,7 @@ export class DirectoryDockClient {
       params
     );
 
-    const entry = baseData.entries.find((e) => e.data.Slug.value === slug);
+    const entry = baseData.entries.find((e) => e.data?.Slug?.value === slug);
 
     if (!entry) {
       throw new Error("Entry with the specified slug not found");
@@ -109,9 +116,9 @@ export class DirectoryDockClient {
 
     const filteredEntries = baseData.entries.filter((entry) => {
       return Object.keys(filters).every((filterKey) => {
-        const field = entry.data[filterKey];
+        const field = entry.data?.[filterKey];
 
-        return field && field.value === filters[filterKey];
+        return field?.value === filters[filterKey];
       });
     });
 
@@ -122,5 +129,11 @@ export class DirectoryDockClient {
     const filters: Filter[] = await this.fetchFromAPI("system/filters.json");
 
     return filters;
+  }
+
+  public async getCategories(): Promise<Category[]> {
+    const response = await this.fetchFromAPI("system/categories.json");
+
+    return response.categories;
   }
 }
