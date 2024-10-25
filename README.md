@@ -80,6 +80,12 @@ async function getCategories() {
   const categories: Category[] = await client.getCategories();
   console.log("Available categories:", categories);
 }
+
+// Getting Submit Fields
+async function getSubmitFields() {
+  const submitFields: SubmitField[] = await client.getSubmitFields();
+  console.log("Available submit fields:", submitFields);
+}
 ```
 
 ### JavaScript
@@ -132,6 +138,12 @@ async function getFilters() {
 async function getCategories() {
   const categories: Category[] = await client.getCategories();
   console.log("Available categories:", categories);
+}
+
+// Getting Submit Fields
+async function getSubmitFields() {
+  const submitFields: SubmitField[] = await client.getSubmitFields();
+  console.log("Available submit fields:", submitFields);
 }
 ```
 

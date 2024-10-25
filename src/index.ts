@@ -7,3 +7,4 @@ export * as GetEntriesResponse from "./types/GetEntriesResponse";
 export * as TransformedEntry from "./types/TransformedEntry";
 export * as Filter from "./types/Filter";
 export * as Category from "./types/Category";
+export * as SubmitField from "./types/SubmitField";

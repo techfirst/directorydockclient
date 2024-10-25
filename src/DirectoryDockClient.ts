@@ -12,6 +12,8 @@ import { Filter } from "./types/Filter";
 
 import { Category } from "./types/Category";
 
+import { SubmitField } from "./types/SubmitField";
+
 dotenv.config();
 
 export class DirectoryDockClient {
@@ -135,5 +137,12 @@ export class DirectoryDockClient {
     const response = await this.fetchFromAPI("system/categories.json");
 
     return response.categories;
+  }
+
+  public async getSubmitFields(): Promise<SubmitField[]> {
+    const submitFields: SubmitField[] = await this.fetchFromAPI(
+      "system/submitfields.json"
+    );
+    return submitFields;
   }
 }

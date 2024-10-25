@@ -1,7 +1,7 @@
 import { DirectoryDockClient } from "../src/DirectoryDockClient";
 import { EntryData } from "../src/types/EntryData";
 
-const VALID_API_KEY = "dd_4c15f0f4-6653-49b7-8960-3f9428db7fbe";
+const VALID_API_KEY = "dd_c4dcc0da-c363-4d22-9d91-2e0bab854c8a";
 
 describe("DirectoryDockClient", () => {
   let client: DirectoryDockClient;
@@ -89,6 +89,19 @@ describe("DirectoryDockClient", () => {
       expect(category).toHaveProperty("id");
       expect(category).toHaveProperty("name");
       expect(category).toHaveProperty("slug");
+    });
+  });
+
+  it("should fetch submit fields successfully", async () => {
+    const submitFields = await client.getSubmitFields();
+
+    expect(Array.isArray(submitFields)).toBe(true);
+    expect(submitFields.length).toBeGreaterThan(0);
+
+    submitFields.forEach((field) => {
+      expect(field).toHaveProperty("FieldName");
+      expect(field).toHaveProperty("FieldLabel");
+      expect(field).toHaveProperty("FieldType");
     });
   });
 });
